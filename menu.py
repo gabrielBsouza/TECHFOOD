@@ -1,19 +1,19 @@
 import this
 import hamburgao
 import pizza
-import milFolhasFrango
-import milFolhasQueijo
-import bauru
+#import salgadoFrango
+#import salgadoQueijo
+#import bauru
 
 
-
+this.opcao = 0 #Criar a variavel global
 def Menu ():
     print('Escolha uma das opções abaixo:\n'+
           '\n1. Hamburgão R$5,00'+
           '\n2. Pizza R$5,00'+
-          '\n3. Mil Folhas de Frango R$5,00'+
-          '\n4. Mil Folhas de Queijo R$5,00'+
-          '\n5. Bauru R$5,00'+
+          #'\n3. Salgado de Frango R$5,00'+
+          #'\n4. Salgado de Queijo R$5,00'+
+          #'\n5. Bauru R$5,00'+
           '\n6. Fechar Programa')
     this.opcao = int(input())
 
@@ -27,15 +27,8 @@ def operacao():
             hamburgao.coletar()
         elif this.opcao == 2:
             #operacao para 2.
-            pizza.coletar()
-        elif this.opcao == 3:
-            #operação para 3.
-            milFolhasFrango.coletar()
-        elif this.opcao == 4:
-            #operacao para 4.
-            milFolhasQueijo.coletar()
-        elif this.opcao == 5:
-            bauru.coletar()
+            pizza.operacaoPizza()
+
         elif this.opcao == 6:
             print('Fechando... agradecemos sua presença aqui!')
         else:
