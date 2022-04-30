@@ -1,49 +1,52 @@
 import this
-import menu
-import reserva
-this.pizzas = 5.00
-this.quantidade = 10
-this.opcao = 0  # Criar a variavel global
+import reservaPizza
+this.precoPizza = 5
+this.quantPizza = 10
+this.quantidade = 0
+this.opcao = 0
+def Preco ():
+    print('O preco do Hamburgão é: R$' + str(this.precoPizza) + ',00.')
 
-def coletar():
-    print("Informe seu nome completo\n ")
-    this.dados = float(input)
-    print("A quantidade de pizzas é: "+ this.quantidade + ". Deseja Comprar quantas pizzas? :")
-    this.quantidadePizzas = float(input)
+def Quantidade ():
+    print('A quantidade disponível desse lanche é: ' + str(this.quantPizza) + '.')
 
-def calcular():
-    coletar()
-    this.precoPizzas = this.quantidadePizzas * this.pizzas
-    this.quantidadeRestante = this.quantidade - this.quantidadePizzas
+def Selecao ():
+    print('Digite a quantidade que deseja comprar: ')
+    this.quantidade = int(input())
+    while (this.quantidade < 0) or (this.quantidade > this.quantPizza):
+        if (this.quantidade < 0) or (this.quantidade > this.quantPizza):
+            print('Informe uma quantidade acessível à disponível, por favor!')
+            this.quantidade = int(input())
+    this.quantPizza = this.quantPizza - this.quantidade
 
-def mostrar():
-    coletar()
-    calcular()
-    print("O valor da sua compra ficou: " + this.precoPizzas )
+def Calculo():
+    return this.quantidade * this.precoPizza
 
+def Compra ():
+    Preco()
+    Quantidade()
+    Selecao()
+    print('---------------- O valor total da compra é: '+ str(Calculo()) +',00. ----------------\n')
+def Menu ():
+    Compra()
+    print('Deseja:'
+          '\n1. Realizar Compra' +
+          '\n2. Realizar reserva'+
+          '\n3. Cancelar Compra')
+    this.opcao = int(input())
 
-def mostrarMenu():
-    print("Escolha uma das Opções Abaixo!\n " +
-          "\n1. Desejo apenas reservar meu produto " +
-          "\n2. Não!!!, desejo escolher outro produto ;)" +
-          "\n3. Sim!!!, desejo Confirmar minha compra :)")
-    this.opcao = int(input())  # Comando para coletar oq o usuario irá digitar
-
-def operacaoPizza():
-    coletar()
-    calcular()
-    mostrar()
-    mostrarMenu()
-    # Mostrar o Menu em tela
-    while this.opcao != 3:
-        mostrarMenu()
-        # Realizar as operções
-        if this.opcao == 1:
-            print("Produto no nome de," + this.dados + ", no valor de " + this.precoPizzas + ", RESERVADO!!")
-        elif this.opcao == 2:
-            this.quantidadeRestante = this.quantidade
-            menu.Menu()
-        elif this.opcao == 3:  ## opção para fechar
-            print("Faça o pagamento através do PIX '61985181121'Obrigado pela preferência!" + this.dados)
-        else:
-            print("Opção Escolhida Inválida, tente outra vez!")
+def operacao():
+    Compra()
+    while this.opcao != 6:
+            Menu()
+            #realizar operações
+            if this.opcao == 1:
+                #operacao para 1.
+                print('O código do PIX é 12345678912, acesse https://www.picpay.com/site para efetuar pagamento.')
+            elif this.opcao == 2:
+                #opereção para 2.
+                reservaPizza.Coletar()
+            elif this.opcao == 3:
+                print('Fechando... agradecemos sua presença aqui!')
+            else:
+                print('Opção escolhida inválida! Tente novamente com as opções fornecidas.')

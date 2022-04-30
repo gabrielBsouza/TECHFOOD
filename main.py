@@ -1,4 +1,4 @@
-import menu
+from TECHFOOD import menu
 
 if __name__ == "__main__":
     menu.operacao()
